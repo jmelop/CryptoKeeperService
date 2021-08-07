@@ -1,16 +1,26 @@
-# This is a sample Python script.
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+websites = ['https://cointelegraph.com', 'https://www.coindesk.com', 'https://bitcoinmagazine.com']
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def getNewsFromList():
+    for web in websites:
+        print(web)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+        driver = webdriver.Chrome('C:/WebDrivers/chromedriver.exe')
+        driver.get(web)
+        time.sleep(3)
+
+        if web == 'https://cointelegraph.com':
+            print('Cointelegraph')
+        elif web == 'https://www.coindesk.com':
+            print('Coindesk')
+        else:
+            print('BitcoinMagazine')
+
+        driver.quit()
+
+
+getNewsFromList()
